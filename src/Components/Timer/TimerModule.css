@@ -1,0 +1,85 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.test{
+
+}
+.buttons{
+
+    margin-bottom: 10px;
+    display: flex;
+
+}
+.timer .buttons{
+    position: absolute;
+    bottom: 14%;
+}
+.buttons div{
+    border-radius: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:#A5DEFF;
+    text-align: center;
+    width: 5rem;
+    font-size: 1.5rem;
+    margin-right: 4rem;
+    padding: 1rem;
+}
+.buttons div:hover{
+    transition-duration: .5s;
+}
+.buttons div:last-child{
+    margin-right: 0;
+}
+.time{
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+}
+.time div{
+    border-radius: 10%;
+    font-family: 'Source Code Pro', monospace;
+    font-weight: lighter;
+    font-size: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 10rem;
+    height: 10rem;
+    margin-right: 100px;
+    background: #080F1A;
+}
+.time div:last-child{
+    margin-right: 0;
+}
+.timer{
+    position: relative;
+    box-shadow: 20px -15px 10px 5px rgba(0,0,0,.5);
+    border-radius: 20% / 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80rem;
+    height: 40rem;
+    background: #092143CC;
+    padding: 10px;
+}
+.title{
+    font-size: 50px;
+    font-weight: lighter;
+    position: absolute;
+    top:10%;
+    letter-spacing: 30px;
+    color: #FFF;
+    font-family: 'Source Code Pro', monospace;
+}
