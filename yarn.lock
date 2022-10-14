@@ -1575,7 +1575,7 @@
     schema-utils "^3.0.0"
     source-map "^0.7.3"
 
-"@reduxjs/toolkit@^1.8.6":
+"@reduxjs/toolkit@^1.5.1", "@reduxjs/toolkit@^1.8.6":
   version "1.8.6"
   resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.8.6.tgz#147fb7957befcdb75bc9c1230db63628e30e4332"
   integrity sha512-4Ia/Loc6WLmdSOzi7k5ff7dLK8CgG2b8aqpLsCAJhazAzGdp//YBUSaj0ceW6a3kDBDNRrq5CRwyCS0wBiL1ig==
@@ -7507,6 +7507,13 @@ redux-thunk@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
   integrity sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==
+
+redux-toolkit-form@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/redux-toolkit-form/-/redux-toolkit-form-1.2.1.tgz#188f5a591b2f9a7ff9733f3bcf47554d43e7e92e"
+  integrity sha512-IUS+PLO++1tgOx5+oGbhR0vlCX+5MQF0i7+gbGSUqjv5oOaWLQLnH9SdPRJ+tO2XeXWqI5j5t6AHCkponCSyvA==
+  dependencies:
+    "@reduxjs/toolkit" "^1.5.1"
 
 redux@^4.1.2:
   version "4.2.0"
