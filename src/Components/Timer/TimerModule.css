@@ -1,29 +1,50 @@
+input::-webkit-input-placeholder {
+    color: white;
+}
+input{
+    color: white;
+}
+input:focus,input:active{
+    outline: none;
 
+}
+.formControl input{
+   border: none;
+    background: #080f1a;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 6px;;
 
+    width: 17%;
+}
 *{
     box-sizing: border-box;
 }
 .formButton{
     background: #A5DEFF;
-    border-radius: 4px;
-    width: 66px;
-    height: 34px;
+    border-radius: 50% 50%/100%;
+    width: 77px  ;
+    height: 41px;
     position: absolute;
-    right: 5%;
+    right: 3%;
     bottom: 9%;
     border: none;
+    font-size: 1rem
 }
 .formButton:hover{
     transform: translateY(-3px);
     transition: all 0.5s;
     box-shadow: 3px 3px 3px rgba(0,0,0,0.5);
 }
+.formButton:active{
+    transform: translateY(0);
+    box-shadow: 0 0 0
+}
 .modalBlock{
     position: relative;
 }
 .formTitle{
     font-weight: 500;
-    font-size: 20px;
+    font-size: 1.2rem;
     font-family: 'Source Code Pro', monospace;
     color: white;
     margin: 0;
@@ -43,31 +64,32 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 input[name="minutes" i] {
-    color: #985EFF;
+
     font-size: 30px;
     position: absolute;
     top: 25%;
-
+    height: 40%;
     left: 41.5%;
     text-align: center;
     appearance: none;
 }
 input[name="seconds" i] {
     text-align: center;
-    color: #985EFF;
+
     font-size: 30px;
     position: absolute;
     top: 25%;
     right:13%;
+    height: 40%;
 }
 input[name="hours" i] {
-    color: #985EFF;
+
     font-size: 30px;
     text-align: center;
     position: absolute;
     top: 25%;
     left: 13%;
-
+    height: 40%;
 }
 .buttons{
 
@@ -82,6 +104,7 @@ input[name="hours" i] {
 
 }
 .buttons div{
+    position: relative;
     border-radius: 10%;
     display: flex;
     justify-content: center;
@@ -92,6 +115,39 @@ input[name="hours" i] {
     font-size: 1.5rem;
     margin-right: 4rem;
     padding: 1rem;
+    backface-visibility: hidden;
+
+}
+.buttons div:after{
+content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    background: #a5deff;
+    z-index: -1;
+    transition: all 1s;
+    border-radius: 10%;
+
+}
+@keyframes boom {
+    0%{
+
+    }
+    100%{
+        transform:scale(2);
+        opacity: 0;
+    }
+
+}
+.buttons div:hover::after{
+    border-radius: 10px;
+    animation: boom;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
 }
 
 .buttons div:hover{
@@ -121,6 +177,7 @@ input[name="hours" i] {
     background: #080F1A;
 }
 
+
 .time div:last-child{
     margin-right: 0;
 }
@@ -148,23 +205,28 @@ input[name="hours" i] {
     font-family: 'Source Code Pro', monospace;
     text-align: center;
 }
+
 .modalButtons{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-end;
     height: 100%;
 }
 .modalButtons div{
-    margin-top: 5%;
+    margin-top: 8%;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    margin-right: 3rem;
-    background: #985EFF;
-    width: 20%;
-    height: 6vh;
+    margin-right: 3.5%;
+    background: #a5deff;
+    width: 24.2%;
+    height: 21.3%;
     border-radius: 4px;
+}
+.modalButtons div:hover{
+transition: all 1s;
+    transform: translateY(-3px);
 }
 .modalButtons div:last-child{
     margin-right: 0;
@@ -189,6 +251,7 @@ input[name="hours" i] {
     .timer{
         height: 30rem;
     }
+
 }
 @media screen and (max-width:454px) {
     .time div {
@@ -220,4 +283,25 @@ input[name="hours" i] {
     .timer{
         height: 20rem;
     }
+    .formTitle{
+        font-size: 1rem;
+    }
+    .modalButtons div{
+        width: 24%;
+        height: 15%;
+        font-size: 1rem;
+    }
+    .formButton{
+        width: 50px  ;
+        height: 30px;
+
+        right: 3%;
+        bottom: 9%;
+        font-size: 1rem
+    }
+    .formControl input{
+        top: 32%;
+        height: 30%;
+    }
+
 }

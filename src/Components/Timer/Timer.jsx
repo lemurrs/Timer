@@ -7,10 +7,10 @@ import {createField} from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
 const ModalForm =(props)=>{
         return(
-            <form className onSubmit={props.handleSubmit}>
-            {createField('30','seconds','input',[],'number',59)}
-                {createField('10','minutes','input',[],'number',59)}
-                {createField('1','hours','input',[],'number',23)}
+            <form onSubmit={props.handleSubmit}>
+            {createField('0','seconds','input',[],'number',59)}
+                {createField('0','minutes','input',[],'number',59)}
+                {createField('0','hours','input',[],'number',23)}
                 <button className={`formButton`}>Save</button>
         </form>
         )
@@ -75,7 +75,7 @@ const Timer = (props) => {
     }
     return (
 <section>
-        <div className={'timer'}>
+        <div className={`timer`}>
             <h1 className={`title`}>LEMMING TIMER</h1>
             <div className={`buttons`}>
                 <div onClick={reset}>Reset</div>
@@ -86,13 +86,13 @@ const Timer = (props) => {
             </div>
             <div className={`time`}>
                 <div>
-                    <span>{seconds}</span>
+                    <span className={`t`}>{seconds}</span>
                     </div>
                 <div>
-                    <span>{minutes}</span>
+                    <span className={`t`}>{minutes}</span>
                 </div>
                 <div>
-                    <span>{hours}</span>
+                    <span className={`t`}>{hours}</span>
                 </div>
             </div>
         </div>
