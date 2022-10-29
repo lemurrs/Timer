@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/TimerSite/static/css/main.ea794c4e.css",
-    "main.js": "/TimerSite/static/js/main.84cdef99.js",
+    "main.css": "/TimerSite/static/css/main.76d3f882.css",
+    "main.js": "/TimerSite/static/js/main.25812e9e.js",
     "static/js/787.28cb0dcd.chunk.js": "/TimerSite/static/js/787.28cb0dcd.chunk.js",
     "static/media/BACKGROUND.png": "/TimerSite/static/media/BACKGROUND.a78611630327c8a0c94e.png",
     "index.html": "/TimerSite/index.html",
-    "main.ea794c4e.css.map": "/TimerSite/static/css/main.ea794c4e.css.map",
-    "main.84cdef99.js.map": "/TimerSite/static/js/main.84cdef99.js.map",
+    "main.76d3f882.css.map": "/TimerSite/static/css/main.76d3f882.css.map",
+    "main.25812e9e.js.map": "/TimerSite/static/js/main.25812e9e.js.map",
     "787.28cb0dcd.chunk.js.map": "/TimerSite/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea794c4e.css",
-    "static/js/main.84cdef99.js"
+    "static/css/main.76d3f882.css",
+    "static/js/main.25812e9e.js"
   ]
 }
