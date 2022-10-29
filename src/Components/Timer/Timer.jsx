@@ -39,7 +39,10 @@ const Timer = (props) => {
     let timer;
     if(isGoing===true) timer = setTimeout(() => dispatch(goTimer()), 1000)
     if(isGoing===false) clearTimeout(timer)
-    if (!count) dispatch(goingToggle(false))
+    if (!count) {
+        dispatch(goingToggle(false))
+        clearTimeout(timer)
+    }
 
     let stopTimer = () => {
         clearTimeout(timer)
