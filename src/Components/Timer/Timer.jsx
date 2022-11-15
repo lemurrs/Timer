@@ -5,6 +5,7 @@ import './TimerModule.css'
 import Modal from "../../common/Modal/Modal";
 import {createField} from "../../common/FormsControls/FormsControls";
 import {reduxForm} from "redux-form";
+
 const ModalForm =(props)=>{
         return(
             <form onSubmit={props.handleSubmit}>
@@ -19,26 +20,46 @@ const ModalReduxForm=reduxForm({
     form:'time'
 })(ModalForm)
 
-const Time = ({count}) => {
-    if (count < 60)
-        return '00:00:' + (count < 10 ? ('0' + count) : count)
-    else if (count >= 60 && count < 3600)
-        return '00:' + (Math.floor(count / 60) < 10 ? '0' + Math.floor(count / 60) : Math.floor(count / 60)) + ":" + ((count % 60) < 10 ? ('0' + count % 60) : count % 60)
-    else if (count >= 3600)
-        return (Math.floor(count / 3600) < 10 ? '0' + Math.floor(count / 3600) : Math.floor(count / 3600))
-            + ':' + (Math.floor(count % 3600 / 60) < 10 ? '0' + Math.floor(count % 3600 / 60) : Math.floor(count % 3600 / 60))
-            + ':' + (Math.floor(count % 3600 % 60) < 10 ? '0' + Math.floor(count % 3600 % 60) : Math.floor(count % 3600 % 60))
+//Timer UI logic
+const Time = (count) => {
+    //Initial value, in case we don`t set minutes or hours to show them correctly
+    let seconds = '00'
+    let minutes='00'
+    let hours='00'
+    //Math part
+    if (count < 60){
+        seconds=count
+    }
+    else if (count >= 60 && count < 3600){
+        minutes=Math.floor(count / 60)
+        seconds=count % 60
+    }
+    else if (count >= 3600){
+        hours=Math.floor(count / 3600)
+        minutes=Math.floor(count % 3600 / 60)
+        seconds=Math.floor(count % 3600 % 60)
+    }
+    //Adding 0 before time value in case its value below 10, so it will be not 4:6:3 but 04:06:03
+    if(String(seconds).length<2) seconds='0'+seconds
+    if(String(minutes).length<2) minutes='0'+minutes
+    if(String(hours).length<2) hours='0'+hours
+
+    return {seconds,minutes,hours}
 }
-const Timer = (props) => {
-    const [modalActive,setModalActive]=useState(false)
+const Timer = () => {
+    //count is time
     const count = useSelector(state => state.mainTimer.timerCount)
-    let [seconds, minutes, hours] = Time({count}).split(':')
     const startCount = useSelector(state => state.mainTimer.maxCount)
-    let isGoing = useSelector(state => state.mainTimer.isGoing)
+    const isGoing = useSelector(state => state.mainTimer.isGoing)
     const dispatch = useDispatch()
+
+    const [modalActive,setModalActive]=useState(false)
+
+    const {seconds, minutes, hours} = Time(count)
     let timer;
-    if(isGoing===true) timer = setTimeout(() => dispatch(goTimer()), 1000)
+    if(isGoing===true)  timer = setTimeout(() => dispatch(goTimer()), 1000)
     if(isGoing===false) clearTimeout(timer)
+
     if (!count) {
         dispatch(goingToggle(false))
         clearTimeout(timer)
@@ -86,13 +107,13 @@ const Timer = (props) => {
             </div>
             <div className={`time`}>
                 <div>
-                    <span className={`t`}>{seconds}</span>
+                    <span>{hours}</span>
                     </div>
                 <div>
-                    <span className={`t`}>{minutes}</span>
+                    <span>{minutes}</span>
                 </div>
                 <div>
-                    <span className={`t`}>{hours}</span>
+                    <span>{seconds}</span>
                 </div>
             </div>
         </div>

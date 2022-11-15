@@ -1,5 +1,5 @@
 import Timer from "./Components/Timer/Timer";
-function App(props) {
+function App() {
   return(
       <div>
         <Timer/>
