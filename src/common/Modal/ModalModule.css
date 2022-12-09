@@ -31,7 +31,6 @@ transform: scale(1);
 }
 .Purple{
     background-color: #092143;
-
 }
 @media screen and (max-width:454px) {
     .modal__content{

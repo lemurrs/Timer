@@ -1,4 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
+import exp from "constants";
 const timerReducer=createSlice({
     name:'timer',
     initialState:{
@@ -22,5 +23,8 @@ const timerReducer=createSlice({
         },
     }
 })
+
+const state = timerReducer.getInitialState()
+export type initialStateType=typeof state
 export default timerReducer.reducer
 export const {resetTimer,goTimer,goingToggle,setTimer}=timerReducer.actions

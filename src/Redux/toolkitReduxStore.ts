@@ -5,6 +5,9 @@ const rootReducer = combineReducers({
     mainTimer:timerReducer,
     form: formReducer,
 })
+
 export const store = configureStore({
     reducer:rootReducer
 })
+const state = store.getState()
+export type appStateType=typeof state

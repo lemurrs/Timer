@@ -1,14 +1,22 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector} from "react-redux";
-import {goingToggle, goTimer, resetTimer, setTimer} from "../../Redux/Timer-reducer";
+import {goingToggle, goTimer, initialStateType, resetTimer, setTimer} from "../../Redux/Timer-reducer";
 import './TimerModule.css'
-import Modal from "../../common/Modal/Modal";
-import {createField} from "../../common/FormsControls/FormsControls";
-import {reduxForm} from "redux-form";
+import Modal from "../../common/Modal/Modal.tsx";
+import {createField} from "../../common/FormsControls/FormsControls.tsx";
+import {InjectedFormProps, reduxForm} from "redux-form";
+import {appStateType} from "../../Redux/toolkitReduxStore";
 
-const ModalForm =(props)=>{
+type Props={
+    handleSubmit:()=>void
+    minutes:number,
+    seconds:number,
+    hours:number
+}
+
+const ModalForm:React.FC<InjectedFormProps<Props>> =({handleSubmit})=>{
         return(
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
             {createField('0','seconds','input',[],'number',59)}
                 {createField('0','minutes','input',[],'number',59)}
                 {createField('0','hours','input',[],'number',23)}
@@ -16,16 +24,16 @@ const ModalForm =(props)=>{
         </form>
         )
 }
-const ModalReduxForm=reduxForm({
+const ModalReduxForm=reduxForm<Props>({
     form:'time'
 })(ModalForm)
 
 //Timer UI logic
-const Time = (count) => {
+const Time = (count:number) => {
     //Initial value, in case we don`t set minutes or hours to show them correctly
-    let seconds = '00'
-    let minutes='00'
-    let hours='00'
+    let seconds:number | string = '00'
+    let minutes:number | string='00'
+    let hours:number | string='00'
     //Math part
     if (count < 60){
         seconds=count
@@ -48,15 +56,15 @@ const Time = (count) => {
 }
 const Timer = () => {
     //count is time
-    const count = useSelector(state => state.mainTimer.timerCount)
-    const startCount = useSelector(state => state.mainTimer.maxCount)
-    const isGoing = useSelector(state => state.mainTimer.isGoing)
+    const count = useSelector((state:appStateType) => state.mainTimer.timerCount)
+    const startCount = useSelector((state:appStateType) => state.mainTimer.maxCount)
+    const isGoing = useSelector((state:appStateType) => state.mainTimer.isGoing)
     const dispatch = useDispatch()
 
     const [modalActive,setModalActive]=useState(false)
 
     const {seconds, minutes, hours} = Time(count)
-    let timer;
+    let timer!:ReturnType<typeof setTimeout>;
     if(isGoing===true)  timer = setTimeout(() => dispatch(goTimer()), 1000)
     if(isGoing===false) clearTimeout(timer)
 
@@ -86,12 +94,12 @@ const Timer = () => {
             dispatch(goingToggle(false))
         }
     }
-    let onModelButtonsClick = (value)=> {
+    let onModelButtonsClick = (value:number)=> {
         dispatch(setTimer(value))
     setModalActive(false)
     }
-    const onSubmit =(values)=> {
-        dispatch(setTimer((values.seconds===undefined ? 0 : +values.seconds)+(values.minutes===undefined ? 0 : +values.minutes*60)+(values.hours===undefined ? 0 : +values.hours*3600)))
+    const onSubmit =({seconds,minutes,hours}:{seconds:number,minutes:number,hours:number})=> {
+        dispatch(setTimer((seconds===undefined ? 0 : +seconds)+(minutes===undefined ? 0 : +minutes*60)+(hours===undefined ? 0 : +hours*3600)))
         setModalActive(false)
     }
     return (
