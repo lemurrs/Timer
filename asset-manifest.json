@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Timer/static/css/main.0822f194.css",
-    "main.js": "/Timer/static/js/main.171d9c17.js",
+    "main.js": "/Timer/static/js/main.53f18930.js",
     "static/media/BACKGROUND.png": "/Timer/static/media/BACKGROUND.a78611630327c8a0c94e.png",
     "index.html": "/Timer/index.html",
     "main.0822f194.css.map": "/Timer/static/css/main.0822f194.css.map",
-    "main.171d9c17.js.map": "/Timer/static/js/main.171d9c17.js.map"
+    "main.53f18930.js.map": "/Timer/static/js/main.53f18930.js.map"
   },
   "entrypoints": [
     "static/css/main.0822f194.css",
-    "static/js/main.171d9c17.js"
+    "static/js/main.53f18930.js"
   ]
 }
