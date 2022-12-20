@@ -26,6 +26,6 @@ export const Element = ({meta:{touched,error},input,...props}:Props)=>{
             {hasError && <span>{error}</span>}
         </div>)
 }
-export const createField=(Placeholder='',Name:string,Typefild:string,Validate:[],Type='text',max=null)=>{
+export const createField=(Placeholder='',Name:string,Typefild:string,Validate:[],Type='text',max:undefined | number)=>{
     return (<Field placeholder={Placeholder} name={Name} component={Element} typefild={Typefild} validate={Validate} type={Type} min={0} max={max} />)
 }
